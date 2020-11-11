@@ -23,19 +23,43 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th v-for="(tittle,index) in headerBars" :key="index"   scope="col">{{tittle.label}}</th>
+                        <th v-for="(tittle,index) in headerBars" :key="index" scope="col">{{tittle.label}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(subject,index) in subjects" :key="index" >
+                    <tr v-for="(subject,index) in subjects" :key="index">
                         <th scope="row">{{subject.number}}</th>
                         <td class="subject__name">{{subject.name}}</td>
                         <td>{{subject.danilsResults}} / {{subject.all}} </td>
                         <td>{{subject.vitasResults}} / {{subject.all}} </td>
-                        
+
                     </tr>
                 </tbody>
             </table>
+
+
+            <h5>Сделанные лабы по дням</h5>
+
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th v-for="(tittle,index) in daysBars" :key="index" scope="col">{{tittle.label}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(day,index) in daysLabs" :key="index">
+                        <th scope="row">{{day.date}}</th>
+                        <td class="subject__name">{{day.subject}}</td>
+                        <td>{{day.danilsResults}} </td>
+                        <td>{{day.vitasResults}}  </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+
         </div>
 
     </section>
@@ -50,8 +74,7 @@
             el: '#app',
             data: {
                 message: '#',
-                headerBars:[
-                    {
+                headerBars: [{
                         label: "#"
                     },
                     {
@@ -64,64 +87,94 @@
                         label: "Виталий"
                     },
                 ],
-            
-                subjects:[
-                    {
-                       number: "1",
-                       name : "Тау",
-                       danilsResults: "5",
-                       vitasResults: "5",
-                       all: "9"
+
+                subjects: [{
+                        number: "1",
+                        name: "Тау",
+                        danilsResults: "5",
+                        vitasResults: "5",
+                        all: "9"
                     },
                     {
-                       number: "2",
-                       name : "Системна Інженерія",
-                       danilsResults: "1",
-                       vitasResults: "4",
-                       all: "15"
+                        number: "2",
+                        name: "Системна Інженерія",
+                        danilsResults: "3",
+                        vitasResults: "5",
+                        all: "15"
                     },
                     {
-                       number: "3",
-                       name : "НПС",
-                       danilsResults: "0",
-                       vitasResults: "0",
-                       all: "5"
+                        number: "3",
+                        name: "НПС",
+                        danilsResults: "0",
+                        vitasResults: "0",
+                        all: "5"
                     },
                     {
-                       number: "4",
-                       name : "ТРПЗ",
-                       danilsResults: "1",
-                       vitasResults: "0",
-                       all: "7"
+                        number: "4",
+                        name: "ТРПЗ",
+                        danilsResults: "1",
+                        vitasResults: "0",
+                        all: "7"
                     },
                     {
-                       number: "5",
-                       name : "Зображення даних ",
-                       danilsResults: "2",
-                       vitasResults: "2",
-                       all: "9"
+                        number: "5",
+                        name: "Зображення даних ",
+                        danilsResults: "2",
+                        vitasResults: "2",
+                        all: "9"
                     },
                     {
-                       number: "6",
-                       name : "БлокЧейн",
-                       danilsResults: "2",
-                       vitasResults: "2",
-                       all: "5"
+                        number: "6",
+                        name: "БлокЧейн",
+                        danilsResults: "3",
+                        vitasResults: "3",
+                        all: "5"
                     },
                     {
-                       number: "7",
-                       name : "Мікро Процесори",
-                       danilsResults: "1",
-                       vitasResults: "1",
-                       all: "9"
+                        number: "7",
+                        name: "Мікро Процесори",
+                        danilsResults: "1",
+                        vitasResults: "1",
+                        all: "9"
                     }
+
+                ],
                 
+                daysBars: [{
+                        label: "Дата"
+                    },
+                    {
+                        label: "Предмет"
+                    },
+                    {
+                        label: "Данил"
+                    },
+                    {
+                        label: "Виталий"
+                    },
+                ],
+
+                daysLabs: [
+                    {
+                    date: "11.11.20",
+                        subject: "БлокЧейн",
+                        danilsResults: "1",
+                        vitasResults: "1"
+
+                    },
+                    {
+                    date: "",
+                        subject: "Системна Інженерія",
+                        danilsResults: "2",
+                        vitasResults: "1"
+
+                    }
                 ]
             }
         })
     </script>
 
-    
+
 
 
 </body>
