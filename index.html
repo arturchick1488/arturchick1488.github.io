@@ -8,6 +8,8 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
 
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>Ситуация с лабами</title>
 </head>
@@ -19,6 +21,23 @@
 
     <section id="app">
         <div class="container">
+
+            <div v-if="isPopUpvisible" @click="closePopUp" class="pop-up">
+                <div class="pop-up__body">
+                    <div class="pop-up__head d-flex">
+                        Внимание , внимание !!!
+                        <i class="fas fa-times-circle ml-auto"></i>
+                    </div>
+
+                    <div class="pop-up__desc">
+                        Якшо ви сімейная людина , або проста звичайна , як Я , або мій товариш Данило , пропоную вам ,
+                        вірішити лабараторні роботи з різних предметів. Насамперед , обов'язково та терміново вирішити
+                        питання з Мпс та Трпз . Також якшо ви маєте гроші та вони вам не потрібні , можете скинути нам ,
+                        але це як захочете , лаби важливіше ! Дякую...
+                    </div>
+                </div>
+            </div>
+
             <h1 class="display-4">Ситуация Данилы и Витали в универе</h1>
             <table class="table">
                 <thead class="thead-dark">
@@ -51,7 +70,7 @@
                         <th scope="row">{{day.date}}</th>
                         <td class="subject__name">{{day.subject}}</td>
                         <td>{{day.danilsResults}} </td>
-                        <td>{{day.vitasResults}}  </td>
+                        <td>{{day.vitasResults}} </td>
 
                     </tr>
 
@@ -73,6 +92,7 @@
         var app = new Vue({
             el: '#app',
             data: {
+                isPopUpvisible: true,
                 message: '#',
                 headerBars: [{
                         label: "#"
@@ -104,7 +124,7 @@
                     },
                     {
                         number: "3",
-                        name: "НПС",
+                        name: "МПС",
                         danilsResults: "0",
                         vitasResults: "0",
                         all: "5"
@@ -139,7 +159,7 @@
                     }
 
                 ],
-                
+
                 daysBars: [{
                         label: "Дата"
                     },
@@ -154,22 +174,39 @@
                     },
                 ],
 
-                daysLabs: [
-                    {
-                    date: "11.11.20",
+                daysLabs: [{
+                        date: "11.11.20",
                         subject: "БлокЧейн",
                         danilsResults: "1",
                         vitasResults: "1"
 
                     },
                     {
-                    date: "",
+                        date: "",
                         subject: "Системна Інженерія",
                         danilsResults: "2",
                         vitasResults: "1"
 
                     }
-                ]
+                ],
+
+
+            },
+            methods: {
+                closePopUp(event) {
+                    let popup = document.querySelector(".pop-up");
+                    let close = document.querySelector(".fa-times-circle");
+
+                    if (event.target == popup || event.target == close) {
+                        document.body.style.overflow = "auto"
+                        this.isPopUpvisible = false
+                    }
+                }
+            },
+            mounted() {
+
+                document.body.style.overflow = "hidden"
+
             }
         })
     </script>
