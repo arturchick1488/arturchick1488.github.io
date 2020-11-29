@@ -53,9 +53,16 @@
                         <td>{{subject.vitasResults}} / {{subject.all}} </td>
 
                     </tr>
+
+                    <tr class="allLabs">
+                        <th scope="row"></th>
+                        <td class="subject__name">Всего сделано</td>
+                        <td>  {{sumOfLabs("danilsResults")}} / {{sumOfLabs("all")}} </td>
+                        <td>  {{sumOfLabs("vitasResults")}}/ {{sumOfLabs("all")}} </td>
+
+                    </tr>
                 </tbody>
             </table>
-
 
             <h5>Сделанные лабы по дням</h5>
 
@@ -92,6 +99,7 @@
         var app = new Vue({
             el: '#app',
             data: {
+                sumCount: 0,
                 isPopUpvisible: false,
                 message: '#',
                 headerBars: [{
@@ -126,7 +134,7 @@
                         number: "3",
                         name: "МПС",
                         danilsResults: "1",
-                        vitasResults: "0",
+                        vitasResults: "2",
                         all: "5"
                     },
                     {
@@ -146,8 +154,8 @@
                     {
                         number: "6",
                         name: "БлокЧейн",
-                        danilsResults: "3",
-                        vitasResults: "3",
+                        danilsResults: "4",
+                        vitasResults: "4",
                         all: "5"
                     },
                     {
@@ -174,8 +182,7 @@
                     },
                 ],
 
-                daysLabs: [
-                    {
+                daysLabs: [{
                         date: "11.11.20",
                         subject: "БлокЧейн",
                         danilsResults: "1",
@@ -230,6 +237,14 @@
                         vitasResults: "2"
 
                     },
+
+                    {
+                        date: "28.11.20",
+                        subject: "МПС",
+                        danilsResults: "0",
+                        vitasResults: "2"
+
+                    }
                 ],
 
 
@@ -243,12 +258,21 @@
                         document.body.style.overflow = "auto"
                         this.isPopUpvisible = false
                     }
+                },
+
+                sumOfLabs(nameOf) {
+                    //let result = String(nameQ);
+                    
+                    let vm = this;
+                    let count = null;
+                    for (var i = 0; i < 7; i++) {
+                       count += Number(this.subjects[i][nameOf])
+                    }
+                    return count
                 }
             },
             mounted() {
-
-                //document.body.style.overflow = "hidden"
-
+                this.sumOfLabs("danilsResults");
             }
         })
     </script>
