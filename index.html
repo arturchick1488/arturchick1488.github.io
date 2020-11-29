@@ -57,8 +57,8 @@
                     <tr class="allLabs">
                         <th scope="row"></th>
                         <td class="subject__name">Всего сделано</td>
-                        <td>  {{sumOfLabs("danilsResults")}} / {{sumOfLabs("all")}} </td>
-                        <td>  {{sumOfLabs("vitasResults")}}/ {{sumOfLabs("all")}} </td>
+                        <td> {{sumOfLabs("danilsResults")}} / {{sumOfLabs("all")}} </td>
+                        <td> {{sumOfLabs("vitasResults")}}/ {{sumOfLabs("all")}} </td>
 
                     </tr>
                 </tbody>
@@ -127,7 +127,7 @@
                         number: "2",
                         name: "Системна Інженерія",
                         danilsResults: "4",
-                        vitasResults: "6",
+                        vitasResults: "7",
                         all: "15"
                     },
                     {
@@ -244,6 +244,14 @@
                         danilsResults: "0",
                         vitasResults: "2"
 
+                    },
+
+                    {
+                        date: "29.11.20",
+                        subject: "Tay",
+                        danilsResults: "0",
+                        vitasResults: "1"
+
                     }
                 ],
 
@@ -262,11 +270,11 @@
 
                 sumOfLabs(nameOf) {
                     //let result = String(nameQ);
-                    
+
                     let vm = this;
                     let count = null;
                     for (var i = 0; i < 7; i++) {
-                       count += Number(this.subjects[i][nameOf])
+                        count += Number(this.subjects[i][nameOf])
                     }
                     return count
                 }
